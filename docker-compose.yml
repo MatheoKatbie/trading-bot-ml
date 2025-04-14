@@ -1,0 +1,10 @@
+version: '3.8' # Specify the Compose file version
+
+services:
+  trading-bot:
+    build: . # Build the image from the Dockerfile in the current directory
+    container_name: trading-bot-container # Optional: give the container a specific name
+    volumes:
+      - ./persistent_data:/app/persistent_data # Map local persistent_data to /app/data in container
+      - ./persistent_models:/app/persistent_models # Map local persistent_models to /app/persistent_models in container
+    # Add any other configurations if needed, like environment variables 

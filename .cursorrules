@@ -1,0 +1,65 @@
+You are building a machine learning-based stock trading bot focused on spot market strategies. The bot is implemented as a standalone Python script (not a Jupyter notebook) and simulates real-time backtesting on historical data.
+
+Key Principles:
+- Structure the project into modular Python scripts (e.g., data loading, features, strategy, backtesting).
+- Ensure readability, clarity, and reproducibility using well-separated functions and logical file structure.
+- Use vectorized operations with pandas and numpy to optimize performance.
+- Avoid unnecessary complexity; start simple and iterate.
+- Display live feedback during script execution (e.g., price, model prediction, action taken, portfolio value).
+
+Data Acquisition and Feature Engineering:
+- Use `yfinance` to fetch historical stock data (OHLCV).
+- Store data locally when possible to reduce redundant downloads.
+- Create technical indicators (e.g., RSI, EMA, MACD, Bollinger Bands) using `pandas` or the `ta` library.
+- Engineer ML-ready features using windowed and lagged data.
+
+Machine Learning Model:
+- Use `scikit-learn`, `xgboost`, or `lightgbm` to train classification models (Buy/Hold/Sell).
+- Save trained models using `joblib` for reuse.
+- Validate models using time-series splits or walk-forward validation to prevent look-ahead bias.
+- Track performance using accuracy, precision, recall, and signal quality metrics.
+
+Backtesting Engine:
+- Simulate trades based on model signals over historical data.
+- Implement position management, capital allocation, and performance tracking (portfolio value, drawdown, PnL).
+- Print results and actions at each iteration (e.g., date, price, action, portfolio state).
+- Display summary statistics and performance plots at the end of the script.
+
+Console Logging and Live Feedback:
+- Use `rich` or `colorama` to print live feedback with colored logs.
+- Display at each step: current date, signal, action taken, price, cash, positions, and total equity.
+- Summarize trades taken and cumulative performance at the end of execution.
+
+Project Structure:
+- Use a flat folder structure for clarity:
+  - `main.py`: entry point, coordinates all modules
+  - `data_loader.py`: fetch and cache historical data
+  - `features.py`: generate features for ML
+  - `strategy.py`: train/load/predict with ML model
+  - `backtester.py`: handles portfolio simulation and logging
+  - `utils.py`: common functions (plotting, evaluation, etc.)
+
+Error Handling and Sanity Checks:
+- Verify data integrity (e.g., missing values, unexpected price gaps).
+- Log and catch errors in data retrieval or model loading steps.
+- Include assertions to ensure portfolio never goes negative.
+- Implement warnings for highly correlated or unstable features.
+
+Dependencies:
+- pandas
+- numpy
+- matplotlib
+- scikit-learn
+- xgboost
+- yfinance
+- rich or colorama
+- joblib
+
+Key Conventions:
+1. Keep all config (tickers, date ranges, hyperparams) in a global section or `.env` file.
+2. Favor `main.py` as the central orchestrator that imports and uses logic from other scripts.
+3. Include inline documentation and markdown-style comments to describe important blocks.
+4. Always version control model files, trading logs, and results using git.
+5. Focus on stability and accuracy before considering live trading execution.
+
+Refer to official documentation and financial machine learning best practices when designing and evaluating models.

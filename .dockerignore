@@ -1,0 +1,26 @@
+# Cache and local data/models
+data/
+models/
+performance_plot.png
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv
+venv
+ENV
+env
+*/env
+*/ENV
+*/venv
+*/.venv
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Git files
+.git
+.gitignore 
